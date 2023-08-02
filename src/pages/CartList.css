@@ -1,0 +1,9 @@
+.cart {
+  width: 90%;
+  /* max-width: 50%; */
+  margin: 0 auto;
+}
+
+.cart h1 {
+  font-size: 1.5rem;
+}

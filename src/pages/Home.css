@@ -1,0 +1,24 @@
+.title {
+  font-size: 1.5rem;
+}
+
+.list-group {
+  width: 500px;
+}
+
+.add-list {
+  cursor: pointer;
+  width: fit-content;
+  transition: all 0.2s ease-in;
+}
+
+.add-list:hover {
+  scale: 1.03;
+  opacity: 1 !important;
+}
+
+@media (max-width: 500px) {
+  .list-group {
+    width: 90%;
+  }
+}

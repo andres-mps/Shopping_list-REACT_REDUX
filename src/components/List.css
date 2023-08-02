@@ -1,0 +1,9 @@
+.listName {
+  font-size: 1.2rem;
+  color: rgb(77, 76, 76);
+}
+
+.list-container:hover {
+  transition: all 0.1s ease-in;
+  scale: 1.01;
+}
