@@ -6,11 +6,25 @@ import { add_item, empty_list } from "../redux/listsSlice";
 import { useParams, useNavigate } from "react-router-dom";
 import { nanoid } from "@reduxjs/toolkit";
 import { Link } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function CartList() {
   const params = useParams();
   const navigate = useNavigate();
   const dispatch = useDispatch();
+
+  const notify = () =>
+    toast.warn("The list has been deleted", {
+      position: "top-right",
+      autoClose: 4000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+    });
 
   const [newItem, setNewItem] = useState([]);
   const list = useSelector((state) => state.lists.find((list) => list.id === params.listId));
@@ -31,6 +45,7 @@ function CartList() {
 
   const handleClick = () => {
     dispatch(empty_list(params.listId));
+    notify();
     navigate("/");
   };
 
@@ -42,7 +57,7 @@ function CartList() {
           <i
             type="button"
             className="bi bi-trash-fill fs-5 align-self-center"
-            onClick={() => dispatch(handleClick)}
+            onClick={handleClick}
           ></i>
         </div>
         <div className="mb-3">
@@ -69,6 +84,18 @@ function CartList() {
       <Link to="/">
         <i className="mt-2 bi bi-arrow-left"></i> Volver a la home
       </Link>
+      <ToastContainer
+        position="top-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="colored"
+      />
     </div>
   );
 }
